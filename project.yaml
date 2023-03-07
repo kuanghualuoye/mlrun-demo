@@ -1,0 +1,55 @@
+kind: project
+metadata:
+  name: new-project
+spec:
+  functions:
+  - url: hub://load_dataset
+    name: ingest
+  - name: tstfunc
+    spec:
+      kind: job
+      metadata:
+        name: tstfunc
+        tag: ''
+        project: new-project
+      spec:
+        command: ''
+        args: []
+        image: ''
+        build:
+          functionSourceCode: IyBDb3B5cmlnaHQgMjAxOCBJZ3VhemlvCiMKIyBMaWNlbnNlZCB1bmRlciB0aGUgQXBhY2hlIExpY2Vuc2UsIFZlcnNpb24gMi4wICh0aGUgIkxpY2Vuc2UiKTsKIyB5b3UgbWF5IG5vdCB1c2UgdGhpcyBmaWxlIGV4Y2VwdCBpbiBjb21wbGlhbmNlIHdpdGggdGhlIExpY2Vuc2UuCiMgWW91IG1heSBvYnRhaW4gYSBjb3B5IG9mIHRoZSBMaWNlbnNlIGF0CiMKIyAgIGh0dHA6Ly93d3cuYXBhY2hlLm9yZy9saWNlbnNlcy9MSUNFTlNFLTIuMAojCiMgVW5sZXNzIHJlcXVpcmVkIGJ5IGFwcGxpY2FibGUgbGF3IG9yIGFncmVlZCB0byBpbiB3cml0aW5nLCBzb2Z0d2FyZQojIGRpc3RyaWJ1dGVkIHVuZGVyIHRoZSBMaWNlbnNlIGlzIGRpc3RyaWJ1dGVkIG9uIGFuICJBUyBJUyIgQkFTSVMsCiMgV0lUSE9VVCBXQVJSQU5USUVTIE9SIENPTkRJVElPTlMgT0YgQU5ZIEtJTkQsIGVpdGhlciBleHByZXNzIG9yIGltcGxpZWQuCiMgU2VlIHRoZSBMaWNlbnNlIGZvciB0aGUgc3BlY2lmaWMgbGFuZ3VhZ2UgZ292ZXJuaW5nIHBlcm1pc3Npb25zIGFuZAojIGxpbWl0YXRpb25zIHVuZGVyIHRoZSBMaWNlbnNlLgojCmRlZiBteV9mdW5jKGNvbnRleHQsIHAxOiBpbnQgPSAxLCBwMj0iYS1zdHJpbmciKToKICAgICIiInRoaXMgaXMgYSB0d28gcGFyYW0gZnVuY3Rpb24KCiAgICA6cGFyYW0gcDEgIGZpcnN0IHBhcmFtCiAgICA6cGFyYW0gcDIgIDJuZCBwYXJhbQogICAgIiIiCiAgICAjIGFjY2VzcyBpbnB1dCBtZXRhZGF0YSwgdmFsdWVzLCBmaWxlcywgYW5kIHNlY3JldHMgKHBhc3N3b3JkcykKICAgIHByaW50KGYiUnVuOiB7Y29udGV4dC5uYW1lfSAodWlkPXtjb250ZXh0LnVpZH0pIikKICAgIHByaW50KGYiUGFyYW1zOiBwMT17cDF9LCBwMj17cDJ9IikKICAgIGNvbnRleHQubG9nZ2VyLmluZm8oInJ1bm5pbmcgZnVuY3Rpb24iKQoKICAgICMgUlVOIHNvbWUgdXNlZnVsIGNvZGUgZS5nLiBNTCB0cmFpbmluZywgZGF0YSBwcmVwLCBldGMuCgogICAgIyBsb2cgc2NhbGFyIHJlc3VsdCB2YWx1ZXMgKGpvYiByZXN1bHQgbWV0cmljcykKICAgIGNvbnRleHQubG9nX3Jlc3VsdCgiYWNjdXJhY3kiLCBwMSAqIDIpCiAgICBjb250ZXh0LmxvZ19yZXN1bHQoImxvc3MiLCBwMSAqIDMpCiAgICBjb250ZXh0LnNldF9sYWJlbCgiZnJhbWV3b3JrIiwgInNrbGVhcm4iKQo=
+          base_image: mlrun/mlrun
+          commands: []
+          code_origin: git@github.com:kuanghualuoye/mlrun-demo.git#master
+          origin_filename: handler.py
+        entry_points:
+          my_func:
+            name: my_func
+            doc: this is a two param function
+            parameters:
+            - name: context
+              default: ''
+            - name: p1
+              type: int
+              default: 1
+            - name: p2
+              default: a-string
+            outputs:
+            - default: ''
+            lineno: 15
+        description: ''
+        default_handler: ''
+        disable_auto_mount: false
+        env: []
+        preemption_mode: prevent
+        affinity: null
+        tolerations: null
+        security_context: {}
+      verbose: false
+  workflows:
+  - path: workflow.py
+    name: main
+  artifacts: []
+  source: git@github.com:kuanghualuoye/mlrun-demo.git#refs/heads/master
+  origin_url: git@github.com:kuanghualuoye/mlrun-demo.git#master
+  desired_state: online
