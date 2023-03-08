@@ -1,4 +1,4 @@
-%%writefile {project_dir}/workflow.py
+%%writefile /home/leixiang/new-proj/workflow.py
 from kfp import dsl
 from mlrun import mount_v3io
 
